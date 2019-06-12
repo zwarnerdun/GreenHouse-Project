@@ -2,59 +2,74 @@
 <html>
 
 <head>
+    <!--Links for CSS/Bootstrap/Javascript-->
     <meta charset="utf-8">
     <title>GreenHouse Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="asset/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <header>GreenHouse Project</header>
+    <!-- Header start here -->
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">GreenHouse Project</h1>
+                <p class="lead">Helping non-native plants grow anywhere around the world!</p>
+            </div>
+        </div>
+    </header>
+    <!--End header area -->
 
-    <p>Put the city you want to check out the weather for in the search bar: </p>
+    <!--Bootstrap containers-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <p id="words">Put the city you want to check out the weather for in the search bar: </p>
 
-    <p><input type='text' id='destination' placeholder='Look for a City' /></p>
-    <p><input id="find-city" type="submit" value="Search City"></p>
-    <div id="view-this"></div>
+                <p><input type='text' id='destination' placeholder='Look for a City' /></p>
+                <p><input id="find-city" type="submit" value="Search City"></p>
+                <div id="view-this"></div>
 
-    <script type="text/javascript">
-    $("#find-city").on("click", function(event) {
-        event.preventDefault();
-        
-        var destination = $("#destination").val();
-        
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + ",us&appid=7a1b3403d3345a747633446a6905bb5e";
-  
-  $.ajax({
-      url: queryURL,
-      method: "GET"
-  }).then(function (response) {
+                <script type="text/javascript">
+                    $("#find-city").on("click", function (event) {
+                        event.preventDefault();
 
-console.log(response);
+                        var destination = $("#destination").val();
 
-var kelvin = response.main.temp;
-var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
+                        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + ",us&appid=7a1b3403d3345a747633446a6905bb5e";
 
-$("#view-this").html(response.name);
-$("#view-this").append("<p>" + response.weather[0].description + "</p>");
-$("#view-this").append("<p>" + farenheit + " F" + "<p>");
-      // var img_url = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
-      //var newimg = $("<img>");
-      //var kelvin = response.main.temp;
-      //var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
-      //newimg.attr("src", img_url);
-      //newimg.attr("alt", "weather image")
-      //$("#search").empty();
+                        $.ajax({
+                            url: queryURL,
+                            method: "GET"
+                        }).then(function (response) {
 
-      //$("#search").html("<img src='" + img_url + " ' />" + farenheit + " F");
-      //$("#search").append("<p>" + response.name + ": " + response.weather[0].description + "</p>");
-  });
+                            console.log(response);
+
+                            var kelvin = response.main.temp;
+                            var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
+                           
+                            $("#view-this").html(response.name);
+                            $("#view-this").append("<p>" + response.weather[0].description + "</p>");
+                            $("#view-this").append("<p>" + farenheit + " F" + "<p>");
+                        });
 
 
-    });
-    
-    </script>
+                    });
 
-   
+                </script>
+
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
