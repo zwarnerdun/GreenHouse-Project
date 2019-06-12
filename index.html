@@ -52,7 +52,7 @@
 
                             var kelvin = response.main.temp;
                             var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
-                           
+                            $("#view-this").empty();
                             $("#view-this").html(response.name);
                             $("#view-this").append("<p>" + response.weather[0].description + "</p>");
                             $("#view-this").append("<p>" + farenheit + " F" + "<p>");
