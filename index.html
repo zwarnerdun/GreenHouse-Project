@@ -52,10 +52,15 @@
 
                             var kelvin = response.main.temp;
                             var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
+                            var img_url = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+                            var newimg = $("<img>");
+
                             $("#view-this").empty();
+                            newimg.attr("src", img_url);
+                            newimg.attr("alt", "weather image")
                             $("#view-this").html(response.name);
                             $("#view-this").append("<p>" + response.weather[0].description + "</p>");
-                            $("#view-this").append("<p>" + farenheit + " F" + "<p>");
+                            $("#view-this").append("<img src='" + img_url + " ' />" + farenheit + " F");
                         });
 
 
