@@ -27,16 +27,12 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-            </div>
-            <div class="col-sm">
                 <p id="words">Put the city you want to check out the weather for in the search bar: </p>
 
                 <p><input type='text' id='destination' placeholder='Look for a City' /></p>
                 <p><input id="find-city" type="submit" value="Search City"></p>
                 <div id="view-this"></div>
-                <div>
-                    <img id="green-house" src="./assets/images/greenhouse.jpg" alt="Missing green house images.">
-                </div>
+
                 <script type="text/javascript">
                     $("#find-city").on("click", function (event) {
                         event.preventDefault();
@@ -72,6 +68,32 @@
 
             </div>
             <div class="col-sm">
+                <img id="green-house" src="./assets/images/greenhouse.jpg" alt="Missing green house images." width="500"
+                    height="500">
+            </div>
+
+            <div class="col-sm"> Weather in Philadelphia:
+                <div id="philly"></div>
+                <script>
+                    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=philadelphia,us&appid=7a1b3403d3345a747633446a6905bb5e";
+
+                    $.ajax({
+                        url: queryURL,
+                        method: "GET"
+                    }).then(function (response) {
+
+                        console.log(response);
+
+                        var newkelvin = response.main.temp;
+                        var newfarenheit = Math.floor((newkelvin - 273.15) * (9 / 5) + 32);
+                        var newimg_url = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+                        var newnewimg = $("<img>");
+
+                        $("#philly").empty();
+                        $("#philly").append("<img src='" + newimg_url + " ' />" + newfarenheit + " F");
+                    });
+
+                </script>
             </div>
         </div>
     </div>
