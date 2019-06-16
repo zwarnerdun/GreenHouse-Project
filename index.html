@@ -33,70 +33,111 @@
                 <p><input id="find-city" type="submit" value="Search City"></p>
                 <div id="view-this"></div>
 
-                <script type="text/javascript">
-                    $("#find-city").on("click", function (event) {
-                        event.preventDefault();
+                <div>
+                    <img id="green-house" src="./assets/images/greenhouse.jpg" alt="Missing green house images.">
+                </div>
 
-                        var destination = $("#destination").val();
 
-                        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + ",us&appid=7a1b3403d3345a747633446a6905bb5e";
+                <!--Table for storing values-->
 
-                        $.ajax({
-                            url: queryURL,
-                            method: "GET"
-                        }).then(function (response) {
 
-                            console.log(response);
+                <div class="container">
 
-                            var kelvin = response.main.temp;
-                            var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
-                            var img_url = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
-                            var newimg = $("<img>");
+                    <div class="text-center bg-dark">
+                        <h1 class="text-light">Database Values</h1>
+                    </div>
 
-                            $("#view-this").empty();
-                            newimg.attr("src", img_url);
-                            newimg.attr("alt", "weather image")
-                            $("#view-this").html(response.name);
-                            $("#view-this").append("<p>" + response.weather[0].description + "</p>");
-                            $("#view-this").append("<img src='" + img_url + " ' />" + farenheit + " F");
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <table class="table">
+                                <tr id="table-title-row">
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Remote Temp</th>
+                                    <th scope="col">Local Temp</th>
+                                    <th scope="col">Greenhouse Temp </th>
+                                </tr>
+                                <tr>
+
+                                    <td id="time-row"></td>
+                                    <td id="remote-temp-row"></td>
+                                    <td id="local-temp-row"></td>
+                                    <td id="greenhouse-row"></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- The core Firebase JS SDK is always required and must be listed first -->
+                    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+                    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+                    <script>
+                        // Your web app's Firebase configuration
+                        var firebaseConfig = {
+                            apiKey: "AIzaSyCeJiI75G9dJGWQrV7wL7lk0m13XsJUlPg",
+                            authDomain: "group1-project1.firebaseapp.com",
+                            databaseURL: "https://group1-project1.firebaseio.com",
+                            projectId: "group1-project1",
+                            storageBucket: "group1-project1.appspot.com",
+                            messagingSenderId: "33061204662",
+                            appId: "1:33061204662:web:baff2c8a1e2bd877"
+                        };
+                        // Initialize Firebase
+                        firebase.initializeApp(firebaseConfig);
+
+                        var database = firebase.database();
+
+                        var time = "";
+                        var remoteTemp = "";
+                        var localTemp = "";
+                        var greenhouseTemp = "";
+                    </script>
+                    <script type="text/javascript">
+
+
+                        $("#find-city").on("click", function (event) {
+                            event.preventDefault();
+
+                            var destination = $("#destination").val();
+
+                            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + ",us&appid=7a1b3403d3345a747633446a6905bb5e";
+
+                            $.ajax({
+                                url: queryURL,
+                                method: "GET"
+                            }).then(function (response) {
+
+                                console.log(response);
+
+                                var kelvin = response.main.temp;
+                                var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
+                                var img_url = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+                                var newimg = $("<img>");
+
+                                $("#view-this").empty();
+                                newimg.attr("src", img_url);
+                                newimg.attr("alt", "weather image")
+                                $("#view-this").html(response.name);
+                                $("#view-this").append("<p>" + response.weather[0].description + "</p>");
+                                $("#view-this").append("<img src='" + img_url + " ' />" + farenheit + " F");
+
+                                //Need to define variables to store the current time when the search city 
+                            });
+
+
                         });
 
+                    </script>
 
-                    });
+                </div>
 
-                </script>
 
-            </div>
-            <div class="col-sm">
-                <img id="green-house" src="./assets/images/greenhouse.jpg" alt="Missing green house images." width="500"
-                    height="500">
-            </div>
-
-            <div class="col-sm"> Weather in Philadelphia:
-                <div id="philly"></div>
-                <script>
-                    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=philadelphia,us&appid=7a1b3403d3345a747633446a6905bb5e";
-
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET"
-                    }).then(function (response) {
-
-                        console.log(response);
-
-                        var newkelvin = response.main.temp;
-                        var newfarenheit = Math.floor((newkelvin - 273.15) * (9 / 5) + 32);
-                        var newimg_url = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
-                        var newnewimg = $("<img>");
-
-                        $("#philly").empty();
-                        $("#philly").append("<img src='" + newimg_url + " ' />" + newfarenheit + " F");
-                    });
-
-                </script>
             </div>
         </div>
-    </div>
 
 
 </body>
