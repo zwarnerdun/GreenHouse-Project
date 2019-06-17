@@ -54,7 +54,7 @@
             id="green-house"
             src="./assets/images/greenhouse.jpg"
             alt="Missing green house images."
-            width="500"
+            width="800"
             height="500"
           />
         </div>
@@ -143,11 +143,11 @@
             
             //Need to define variables to store the current time when the search city
             //Database Operations
-            var time = "4:34 pm"; //update with now function
+            var time = new Date(); //update with now function
             var remoteTemp = $("#destination").val();
             var localTemp = $("#philly").val();
             var greenhouseTemp = $("#destination").val();
-            $("#green-house-temp").text("Green House Temperature " + localTemp);
+            $("#green-house-temp").text("Green House Temperature " + farenheit);
             database.ref().push({
                 time: time,
                 remoteTemp: remoteTemp,
@@ -163,7 +163,8 @@
             var time = childSnapshot.val().time; 
             var remoteTemp = childSnapshot.val().remoteTemp; 
             var localTemp = childSnapshot.val().localTemp; 
-            var greenhouseTemp = childSnapshot.val().greenhouseTemp; 
+            var greenhouseTemp = childSnapshot.val().greenhouseTemp;
+            // alert(time);
             console.log (time); 
             console.log (remoteTemp); 
             console.log (localTemp);
