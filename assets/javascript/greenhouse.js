@@ -16,7 +16,7 @@ $(document).ready(function(){
         var newnewimg = $("<img>");
 
         $("#philly").empty();
-        $("#philly").append("Weather in Philadelphia" + "<img src='" + newimg_url + " ' />" + newfarenheit + " F");
+        $("#philly").append("<img src='" + newimg_url + " ' />" + newfarenheit + " F");
     });
 
     //Destination Weather
