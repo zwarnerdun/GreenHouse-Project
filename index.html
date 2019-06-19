@@ -1,189 +1,191 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--Links for CSS/Bootstrap/Javascript-->
-    <meta charset="utf-8" />
-    <title>GreenHouse Project</title>
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="assets/css/style.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
+<head>
+  <!--Links for CSS/Bootstrap/Javascript/Pure CSS-->
+  <meta charset="utf-8" />
+  <title>GreenHouse Project</title>
 
-  <body>
-    <!-- Header start here -->
-    <header>
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">GreenHouse Project</h1>
-          <p class="lead">
-            Helping non-native plants grow anywhere around the world!
-          </p>
-        </div>
-      </div>
-    </header>
-    <!--End header area -->
-    <!--Bootstrap containers-->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <p id="words">
-            Put the city you want to check out the weather for in the search
-            bar:
-          </p>
 
-          <p>
-            <input type="text" id="destination" placeholder="Look for a City" />
-          </p>
-          <p><input id="find-city" type="submit" value="Search City" /></p>
-          <div id="view-this"></div>
-        </div>
-        <div class="col-sm-6">
-            <p id="green-house-temp">Green House Temperature : </p>
-          <img
-            id="green-house"
-            src="./assets/images/greenhouse.jpg"
-            alt="Missing green house images."
-            width="800"
-            height="500"
-          />
-        </div>
-        <div class="col-sm-3" id="philly">Weather in Philadelphia:</div>
-        <!-- <div id="philly"></div> -->
-      </div>
-      <!--Table for storing values-->
-      <div class="row">
-        <div class="text-center bg-dark">
-          <h1 class="text-light">Database Values</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <table class="table" id="temp-table">
-            <tr id="table-title-row">
-              <th scope="col">Time</th>
-              <th scope="col">Remote Temp</th>
-              <th scope="col">Local Temp</th>
-              <th scope="col">Greenhouse Temp</th>
-            </tr>
-            <tr>
-              <td id="time-row"></td>
-              <td id="remote-temp-row"></td>
-              <td id="local-temp-row"></td>
-              <td id="greenhouse-row"></td>
-            </tr>
-          </table>
-        </div>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+    integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- Header start here -->
+  <header>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">GreenHouse Project</h1>
+        <p class="lead">
+          Helping non-native plants grow anywhere around the world!
+        </p>
       </div>
     </div>
-    <script src="assets/javascript/greenhouse.js"></script>
-   
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase.js"></script>
+  </header>
+  <!--End header area -->
+  <!--Bootstrap containers-->
 
-    <script>
-      //Database connectivity
-      // https://firebase.google.com/docs/web/setup#config-web-app -->
+  <div class="pure-g">
+    <div class="pure-u-1-3">
+      <p id="words">
+        Put the city you want to check out the weather for in the search
+        bar:
+      </p>
+      <p>
+        <input type="text" id="destination" placeholder="Look for a City" />
+      </p>
+      <p><input id="find-city" type="submit" value="Search City" /></p>
+      <div id="view-this"></div>
+      </p>
+    </div>
 
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyCeJiI75G9dJGWQrV7wL7lk0m13XsJUlPg",
-        authDomain: "group1-project1.firebaseapp.com",
-        databaseURL: "https://group1-project1.firebaseio.com",
-        projectId: "group1-project1",
-        storageBucket: "group1-project1.appspot.com",
-        messagingSenderId: "33061204662",
-        appId: "1:33061204662:web:baff2c8a1e2bd877"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+    <div class="pure-u-1-3">
+        <p> Green House Temperature : </p>
+        <p id="green-house-temp"></p>
+    </div>
+    <div class="pure-u-1-3">
+        <p>Weather in Philadelphia:</p>
+        <p id="philly"></p>
+    </div>
+  </div>
 
-      var database = firebase.database();
+  <div class="col-sm-12">
+    <img id="green-house" src="./assets/images/greenhouse.jpg" alt="Missing green house images." width="800"
+      height="500" />
+  </div>
+
+  <!--Table for storing values-->
+  <div class="row">
+    <div class="text-center bg-dark">
+      <h1 class="text-light">Database Values</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <table class="table" id="temp-table">
+        <tr id="table-title-row">
+          <th scope="col">Time</th>
+          <th scope="col">Remote Temp</th>
+          <th scope="col">Local Temp</th>
+          <th scope="col">Greenhouse Temp</th>
+        </tr>
+        <tr>
+          <td id="time-row"></td>
+          <td id="remote-temp-row"></td>
+          <td id="local-temp-row"></td>
+          <td id="greenhouse-row"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  </div>
+  <script src="assets/javascript/greenhouse.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase.js"></script>
+
+  <script>
+    //Database connectivity
+    // https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCeJiI75G9dJGWQrV7wL7lk0m13XsJUlPg",
+      authDomain: "group1-project1.firebaseapp.com",
+      databaseURL: "https://group1-project1.firebaseio.com",
+      projectId: "group1-project1",
+      storageBucket: "group1-project1.appspot.com",
+      messagingSenderId: "33061204662",
+      appId: "1:33061204662:web:baff2c8a1e2bd877"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var database = firebase.database();
 
 
 
-      //get destination temperature
-          //Destination Weather
+    //get destination temperature
+    //Destination Weather
     //Destination Weather
     $("#find-city").on("click", function (event) {
-        event.preventDefault();
-    
-        var destination = $("#destination").val();
-    
-        var destQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + ",us&appid=7a1b3403d3345a747633446a6905bb5e";
-    
-        $.ajax({
-            url: destQueryURL,
-            method: "GET"
-        }).then(function (destResponse) {
-    
-            console.log(destResponse);
-    
-            var kelvin = destResponse.main.temp;
-            var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
-            var img_url = "http://openweathermap.org/img/w/" + destResponse.weather[0].icon + ".png"
-            var newimg = $("<img>");
-    
-            $("#view-this").empty();
-            newimg.attr("src", img_url);
-            newimg.attr("alt", "weather image")
-            $("#view-this").html(destResponse.name);
-            $("#view-this").append("<p>" + destResponse.weather[0].description + "</p>");
-            $("#view-this").append("<img src='" + img_url + " ' />" + farenheit + " F");
-            
-            //Need to define variables to store the current time when the search city
-            //Database Operations
-            var time = new Date(); //update with now function
-            var remoteTemp = $("#destination").val();
-            var localTemp = $("#philly").val();
-            var greenhouseTemp = $("#destination").val();
-            $("#green-house-temp").text("Green House Temperature " + farenheit);
-            database.ref().push({
-                time: time,
-                remoteTemp: remoteTemp,
-                localTemp: localTemp,
-                greenhouseTemp: greenhouseTemp
-            })
-        });
+      event.preventDefault();
 
-        database.ref().on(
+      var destination = $("#destination").val();
+
+      var destQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + ",us&appid=7a1b3403d3345a747633446a6905bb5e";
+
+      $.ajax({
+        url: destQueryURL,
+        method: "GET"
+      }).then(function (destResponse) {
+
+        console.log(destResponse);
+
+        var kelvin = destResponse.main.temp;
+        var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
+        var img_url = "http://openweathermap.org/img/w/" + destResponse.weather[0].icon + ".png"
+        var newimg = $("<img>");
+
+        $("#view-this").empty();
+        newimg.attr("src", img_url);
+        newimg.attr("alt", "weather image")
+        $("#view-this").html(destResponse.name);
+        $("#view-this").append("<p>" + destResponse.weather[0].description + "</p>");
+        $("#view-this").append("<img src='" + img_url + " ' />" + farenheit + " F");
+
+        //Need to define variables to store the current time when the search city
+        //Database Operations
+        var time = new Date(); //update with now function
+        var remoteTemp = $("#destination").val();
+        var localTemp = $("#philly").val();
+        var greenhouseTemp = $("#destination").val();
+        var difference = Math.abs(localTemp - greenhouseTemp);
+        var newdiff = JSON.stringify(difference);
+        $("#green-house-temp").empty();
+        $("#green-house-temp").append("Green House Temperature: " + farenheit);
+        $("#green-house-temp").append("<p>" + "Difference in temp: " + newdiff + "</p>");
+        database.ref().push({
+          time: time,
+          remoteTemp: remoteTemp,
+          localTemp: localTemp,
+          greenhouseTemp: greenhouseTemp
+        })
+      });
+
+      database.ref().on(
         "child_added", function (childSnapshot) {
-            console.log(childSnapshot); 
+          console.log(childSnapshot);
 
-            var time = childSnapshot.val().time; 
-            var remoteTemp = childSnapshot.val().remoteTemp; 
-            var localTemp = childSnapshot.val().localTemp; 
-            var greenhouseTemp = childSnapshot.val().greenhouseTemp;
-            // alert(time);
-            console.log (time); 
-            console.log (remoteTemp); 
-            console.log (localTemp);
-            console.log (greenhouseTemp);  
+          var time = childSnapshot.val().time;
+          var remoteTemp = childSnapshot.val().remoteTemp;
+          var localTemp = childSnapshot.val().localTemp;
+          var greenhouseTemp = childSnapshot.val().greenhouseTemp;
+          // alert(time);
+          console.log(time);
+          console.log(remoteTemp);
+          console.log(localTemp);
+          console.log(greenhouseTemp);
 
-            var newRow = $("<tr>").append (
-                $("<td>").text(time), 
-                $("<td>").text(remoteTemp),
-                $("<td>").text(localTemp),  
-                $("<td>").text(greenhouseTemp), 
-            )
+          var newRow = $("<tr>").append(
+            $("<td>").text(time),
+            $("<td>").text(remoteTemp),
+            $("<td>").text(localTemp),
+            $("<td>").text(greenhouseTemp),
+          )
 
-            $("#temp-table").append(newRow); 
-        }    
-    )
+          $("#temp-table").append(newRow);
+        }
+      )
 
 
     });
-    </script>
-  </body>
-</html>
+  </script>
+</body>
 
+</html>
