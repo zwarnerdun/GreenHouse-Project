@@ -17,6 +17,7 @@ $(document).ready(function(){
 
         $("#philly").empty();
         $("#philly").append("<img src='" + newimg_url + " ' />" + newfarenheit + " F");
+        localStorage.setItem("philTemp", newfarenheit);
     });
 
     //Destination Weather

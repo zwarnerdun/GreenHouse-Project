@@ -61,8 +61,8 @@
 
   <!--Table for storing values-->
   <div class="row">
-    <div class="text-center bg-dark">
-      <h1 class="text-light">Database Values</h1>
+    <div class="col-lg-12" class="text-center bg-dark">
+      <h1 class="text-dark">  Database Values</h1>
     </div>
   </div>
   <div class="row">
@@ -143,13 +143,15 @@
         //Database Operations
         var time = new Date(); //update with now function
         var remoteTemp = $("#destination").val();
-        var localTemp = $("#philly").val();
+        var localTemp = localStorage.philTemp; //$("#philly").val();
         var greenhouseTemp = $("#destination").val();
-        var difference = Math.abs(localTemp - greenhouseTemp);
+        //console.log("Local "  + newfarenheit);
+        console.log("greenhouse "  + farenheit);
+        var difference = Math.abs(parseInt(localTemp) - parseInt(farenheit));
         var newdiff = JSON.stringify(difference);
         $("#green-house-temp").empty();
         $("#green-house-temp").append("Green House Temperature: " + farenheit);
-        $("#green-house-temp").append("<p>" + "Difference in temp: " + newdiff + "</p>");
+        $("#green-house-temp").append("<p>" + "Difference in temp: " + difference + "</p>");
         database.ref().push({
           time: time,
           remoteTemp: remoteTemp,
@@ -162,20 +164,28 @@
         "child_added", function (childSnapshot) {
           console.log(childSnapshot);
 
+          var currentDate = new Date();
+
+          var date = currentDate.getDate();
+          var month = currentDate.getMonth(); //Be careful! January is 0 not 1
+          var year = currentDate.getFullYear();
+
+          var dateString = date + "-" +(month + 1) + "-" + year;
+
           var time = childSnapshot.val().time;
           var remoteTemp = childSnapshot.val().remoteTemp;
           var localTemp = childSnapshot.val().localTemp;
           var greenhouseTemp = childSnapshot.val().greenhouseTemp;
           // alert(time);
-          console.log(time);
-          console.log(remoteTemp);
-          console.log(localTemp);
-          console.log(greenhouseTemp);
+          // console.log(time);
+          // console.log(remoteTemp);
+          // console.log(localTemp);
+          // console.log(greenhouseTemp);
 
           var newRow = $("<tr>").append(
-            $("<td>").text(time),
+            $("<td>").text(dateString),
             $("<td>").text(remoteTemp),
-            $("<td>").text(localTemp),
+            $("<td>").text(localStorage.philTemp),
             $("<td>").text(greenhouseTemp),
           )
 
