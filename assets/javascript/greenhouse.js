@@ -1,7 +1,7 @@
 $(document).ready(function(){
     
     //Philadelphia weather
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=philadelphia,us&appid=7a1b3403d3345a747633446a6905bb5e";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=philadelphia,us&appid=7a1b3403d3345a747633446a6905bb5e";
 
     $.ajax({
         url: queryURL,
@@ -12,7 +12,7 @@ $(document).ready(function(){
 
         var newkelvin = response.main.temp;
         var newfarenheit = Math.floor((newkelvin - 273.15) * (9 / 5) + 32);
-        var newimg_url = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+        var newimg_url = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
         var newnewimg = $("<img>");
 
         $("#philly").empty();
