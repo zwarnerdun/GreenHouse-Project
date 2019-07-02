@@ -129,7 +129,7 @@
 
         var kelvin = destResponse.main.temp;
         var farenheit = Math.floor((kelvin - 273.15) * (9 / 5) + 32);
-        var img_url = "http://openweathermap.org/img/w/" + destResponse.weather[0].icon + ".png"
+        var img_url = "https://openweathermap.org/img/w/" + destResponse.weather[0].icon + ".png"
         var newimg = $("<img>");
 
         $("#view-this").empty();
