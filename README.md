@@ -18,6 +18,18 @@ Presentation link: https://docs.google.com/presentation/d/1Hh1LLwOVIWjyE36QxHgur
 • All that was needed was to make sure read and write were true and make sure the code to initilaize our firebase had the correct content.
 
 # Demo
+Check out the link here: https://bruce2tr.github.io/Group-Project-1
 
-https://bruce2tr.github.io/Group-Project-1
+![GH](https://user-images.githubusercontent.com/49568886/65727779-c19c5b80-e086-11e9-952e-e1d30b623b00.PNG)
 
+![GH2](https://user-images.githubusercontent.com/49568886/65727781-c4974c00-e086-11e9-9fd3-6308efbac9dc.PNG)
+
+# Built With
+
+• HTML5
+
+• Pure.CSS
+
+• Javascript
+
+• Bootstrap
