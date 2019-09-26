@@ -2,7 +2,7 @@
 Our project serves as a simulator that will retrieve weather parameters from a specified geographic location. It will recreate items, such as temperature and lighting, at that remote location in a conservatory/greenhouse at a different location on the planet. As well as returning important facts on your plant. 
 
 # Team Efforts
-• Payal - sass, weather api, UX
+• Payal - Pure.css, weather api, UX
 
 • Robert - firebase, tropicalfruitandveg api
 
